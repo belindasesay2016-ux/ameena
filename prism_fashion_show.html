@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pink Prism Fashion Show</title>
+<style>
+  :root{
+    --pink:#ff2f9d; --hot:#ff0f7b; --soft:#ffd6ee; --deep:#7b1454;
+    --gold:#ffd34d; --ink:#24101d; --white:#fff8fc;
+  }
+  *{box-sizing:border-box;scroll-behavior:smooth}
+  body{
+    margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);
+    background:
+      radial-gradient(circle at 15% 10%,#fff 0 5%,transparent 20%),
+      radial-gradient(circle at 85% 20%,#ffd1eb 0 4%,transparent 22%),
+      linear-gradient(135deg,#fff7fc,#ffd3eb 45%,#ff8fc8 100%);
+    overflow-x:hidden;
+  }
+  header{
+    min-height:92vh;position:relative;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:50px 20px;overflow:hidden;
+  }
+  .sparkles{position:absolute;inset:0;pointer-events:none}
+  .sparkles span{position:absolute;width:8px;height:8px;background:white;border-radius:50%;
+    box-shadow:0 0 18px #fff,0 0 30px var(--pink);animation:twinkle 2s infinite alternate}
+  .sparkles span:nth-child(1){left:8%;top:25%}.sparkles span:nth-child(2){left:20%;top:70%;animation-delay:.4s}
+  .sparkles span:nth-child(3){left:75%;top:30%;animation-delay:.8s}.sparkles span:nth-child(4){left:90%;top:68%;animation-delay:1.2s}
+  .sparkles span:nth-child(5){left:55%;top:12%;animation-delay:.2s}.sparkles span:nth-child(6){left:40%;top:82%;animation-delay:1s}
+  @keyframes twinkle{to{transform:scale(2);opacity:.35}}
+  .hero{position:relative;z-index:2;max-width:950px}
+  .eyebrow{letter-spacing:7px;text-transform:uppercase;font-weight:900;color:var(--deep)}
+  h1{font-size:clamp(3.2rem,10vw,8rem);line-height:.85;margin:20px 0;
+    background:linear-gradient(90deg,#ff1493,#ff7ac4,#b00067,#ff1493);background-size:300%;
+    -webkit-background-clip:text;color:transparent;animation:shine 5s linear infinite}
+  @keyframes shine{to{background-position:300%}}
+  .hero p{font-size:1.25rem;max-width:720px;margin:0 auto 28px}
+  .btn{display:inline-block;text-decoration:none;color:white;background:linear-gradient(135deg,#ff0f7b,#a40062);
+    padding:15px 28px;border-radius:999px;font-weight:900;box-shadow:0 10px 30px #b0006750;margin:6px}
+  nav{position:sticky;top:0;z-index:20;background:#fff9fceb;backdrop-filter:blur(12px);
+    border-bottom:1px solid #ffffffaa;padding:12px;text-align:center}
+  nav a{color:var(--deep);text-decoration:none;font-weight:800;margin:0 14px}
+  section{padding:80px 7%;max-width:1400px;margin:auto}
+  .section-title{text-align:center;font-size:clamp(2rem,5vw,4rem);margin:0 0 12px;color:var(--deep)}
+  .section-sub{text-align:center;max-width:700px;margin:0 auto 40px}
+  .showcase{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px}
+  .card{
+    position:relative;border-radius:28px;padding:24px;min-height:420px;overflow:hidden;
+    background:linear-gradient(150deg,#ffffffdd,#fff0f9cc);border:2px solid #fff;
+    box-shadow:0 18px 45px #8d145330;transition:.35s;
+  }
+  .card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 25px 60px #8d145350}
+  .look{height:245px;display:flex;align-items:center;justify-content:center;position:relative}
+  .dress{width:130px;height:185px;position:relative;filter:drop-shadow(0 12px 12px #9d075655)}
+  .dress:before{content:"";position:absolute;left:42px;top:0;width:46px;height:42px;
+    background:linear-gradient(90deg,#ff53b1,#fff,#ff1493);border-radius:50% 50% 40% 40%}
+  .dress:after{content:"";position:absolute;left:5px;top:30px;width:120px;height:150px;
+    clip-path:polygon(35% 0,65% 0,78% 28%,100% 100%,0 100%,22% 28%);
+    background:linear-gradient(120deg,#ff0f7b,#ffb5df 40%,#d00074 70%,#fff 100%);
+    border-radius:15px 15px 25px 25px}
+  .card:nth-child(2) .dress:after{background:linear-gradient(135deg,#ff008c,#7b00ff,#ffb7f0,#ff008c)}
+  .card:nth-child(3) .dress:after{background:linear-gradient(120deg,#ff004c,#ff7a00,#ffd700,#ff28a7)}
+  .card:nth-child(4) .dress:after{background:linear-gradient(120deg,#ff00d4,#00e5ff,#fff,#ff1493)}
+  .card:nth-child(5) .dress:after{background:linear-gradient(120deg,#ff2f9d,#30004d,#ff9ed7,#ff2f9d)}
+  .card:nth-child(6) .dress:after{background:linear-gradient(120deg,#ff4fb3,#00ffd5,#fff,#ff1590)}
+  .designer{color:var(--pink);font-weight:900}.stars{color:#e5a900;font-size:1.3rem;letter-spacing:2px}
+  .badge{position:absolute;right:18px;top:18px;background:#fff;border-radius:999px;padding:8px 12px;font-weight:900;font-size:.8rem}
+  .rating{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+  .stage{
+    min-height:600px;border-radius:40px;position:relative;overflow:hidden;
+    background:radial-gradient(circle at 50% 30%,#ffbde2,#ff3a9d 32%,#4b0031 80%);
+    box-shadow:inset 0 0 100px #0005,0 25px 70px #7b145455;
+  }
+  .stage-floor{position:absolute;bottom:-20%;left:10%;width:80%;height:45%;background:#ffb1dc;
+    transform:perspective(400px) rotateX(55deg);filter:blur(2px);box-shadow:0 0 60px #fff}
+  .spotlight{position:absolute;top:-10%;left:50%;width:250px;height:520px;
+    transform:translateX(-50%);background:linear-gradient(#fff9,#fff1,transparent);
+    clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);filter:blur(4px)}
+  .winner{position:absolute;inset:auto 0 70px;text-align:center;color:white;z-index:2}
+  .winner h3{font-size:3rem;margin:10px}.crown{font-size:4rem;filter:drop-shadow(0 0 12px gold)}
+  .score{font-size:2rem;color:var(--gold);font-weight:900}
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+  .rule{padding:25px;border-radius:24px;background:#ffffffc9;border:2px solid #fff;box-shadow:0 12px 30px #7b145322}
+  .rule b{font-size:1.2rem;color:var(--deep)}
+  .cta{text-align:center;background:linear-gradient(135deg,#ff2f9d,#7b1454);color:white;border-radius:40px;padding:60px 20px}
+  footer{text-align:center;padding:35px;color:#7b1454;font-weight:700}
+  @media(max-width:600px){nav a{margin:0 5px;font-size:.85rem}.card{min-height:390px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#designs">DESIGNS</a><a href="#stage">RUNWAY</a><a href="#rules">RULES</a><a href="#join">JOIN</a>
+</nav>
+
+<header>
+  <div class="sparkles"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="hero">
+    <div class="eyebrow">The Ultimate Pink Runway</div>
+    <h1>PRISM<br>FASHION</h1>
+    <p>Where imagination becomes couture. Dream up impossible colors, sculpt unforgettable silhouettes, and light up the runway.</p>
+    <a class="btn" href="#designs">EXPLORE THE LOOKS ✦</a>
+    <a class="btn" href="#stage">SEE THE GRAND STAGE</a>
+  </div>
+</header>
+
+<section id="designs">
+  <h2 class="section-title">THE DESIGNER COLLECTION</h2>
+  <p class="section-sub">Six fantasy looks. Six fearless designers. Every color is pushed beyond ordinary pink.</p>
+  <div class="showcase">
+    <article class="card"><span class="badge">LOOK 01</span><div class="look"><div class="dress"></div></div>
+      <h3>Rose Comet</h3><p class="designer">Designer: Amara Bloom</p><p>Liquid-rose shimmer with a starlight train.</p>
+      <div class="rating"><span class="stars">★★★★★</span><b>8/10</b></div></article>
+    <article class="card"><span class="badge">LOOK 02</span><div class="look"><div class="dress"></div></div>
+      <h3>Galaxy Fuchsia</h3><p class="designer">Designer: Nova Rae</p><p>Electric fuchsia meets cosmic violet and holographic sparkle.</p>
+      <div class="rating"><span class="stars">★★★★★★</span><b>9/10</b></div></article>
+    <article class="card"><span class="badge">LOOK 03</span><div class="look"><div class="dress"></div></div>
+      <h3>Sunset Flame</h3><p class="designer">Designer: Zuri Flame</p><p>A blazing pink-orange-gold fantasy inspired by a summer sunset.</p>
+      <div class="rating"><span class="stars">★★★★★★★★</span><b>9/10</b></div></article>
+    <article class="card"><span class="badge">LOOK 04</span><div class="look"><div class="dress"></div></div>
+      <h3>Neon Mermaid</h3><p class="designer">Designer: Mira Skye</p><p>Dreamy pink waves with aqua flashes and a glassy finish.</p>
+      <div class="rating"><span class="stars">★★★★★★★★★</span><b>9.5/10</b></div></article>
+    <article class="card"><span class="badge">LOOK 05</span><div class="look"><div class="dress"></div></div>
+      <h3>Midnight Rosé</h3><p class="designer">Designer: Sable Hart</p><p>Deep berry glamour wrapped in luminous pink highlights.</p>
+      <div class="rating"><span class="stars">★★★★★★★★★★</span><b>10/10</b></div></article>
+    <article class="card"><span class="badge">LOOK 06</span><div class="look"><div class="dress"></div></div>
+      <h3>Crystal Bloom</h3><p class="designer">Designer: Lila Star</p><p>Pink crystal energy with turquoise flashes and floating petals.</p>
+      <div class="rating"><span class="stars">★★★★★★★★</span><b>9/10</b></div></article>
+  </div>
+</section>
+
+<section id="stage">
+  <h2 class="section-title">THE GRAND RUNWAY</h2>
+  <p class="section-sub">One spotlight. One champion. Ten golden stars await the winning look.</p>
+  <div class="stage">
+    <div class="spotlight"></div><div class="stage-floor"></div>
+    <div class="winner"><div class="crown">♛</div><h3>CHAMPION'S SPOTLIGHT</h3><div class="score">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div><p>The winner takes the top of the stage!</p></div>
+  </div>
+</section>
+
+<section id="rules">
+  <h2 class="section-title">SHOWTIME RULES</h2>
+  <div class="rules">
+    <div class="rule">🎨 <b>Imagine</b><br><br>Create a look using bold, unexpected colors and your biggest fashion ideas.</div>
+    <div class="rule">✨ <b>Shine</b><br><br>Every design earns stars for creativity, color, runway presence, and originality.</div>
+    <div class="rule">🏆 <b>Ten-Star Crown</b><br><br>The top-scoring design earns all 10 gold stars and the champion spotlight.</div>
+    <div class="rule">💃 <b>Fun Finale</b><br><br>Designers who don't win choose a playful, age-appropriate dare or dance challenge.</div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="cta">
+    <h2 style="font-size:3rem;margin-top:0">READY TO OWN THE RUNWAY?</h2>
+    <p>Bring your imagination. Bring your sparkle. Bring the most extraordinary pink look you can dream up.</p>
+    <a class="btn" style="background:white;color:#a40062" href="#designs">ENTER THE SHOW ✦</a>
+  </div>
+</section>
+
+<footer>© 2026 Prism Fashion Show · Imagine boldly. Design beautifully. Shine brightly.</footer>
+</body>
+</html>
